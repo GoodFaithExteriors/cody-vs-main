@@ -1,0 +1,140 @@
+<UserControl x:Class="Cody.UI.Controls.Options.GeneralOptionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cody.UI.Controls.Options"
+             xmlns:controls="clr-namespace:Cody.UI.Controls"
+             xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+             xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+             xmlns:converters="clr-namespace:Cody.UI.Converters"
+             mc:Ignorable="d" 
+             d:DesignWidth="500"
+             d:DesignHeight="300"
+             >
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="textBoxInError" TargetType="TextBox">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="ToolTip"
+              Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+              Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <GroupBox Header="Cody">
+            <Grid Margin="3,6,3,3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="128" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <!--Custom Cody Configuration-->
+                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
+                    <TextBlock TextWrapping="Wrap">
+                        Custom JSON settings (requires restart)
+                    </TextBlock>
+                </Label>
+
+                <TextBox
+                    Margin="0 2 0 5"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Height="100"
+                    Style="{StaticResource textBoxInError}"
+                    TextWrapping="Wrap"
+                    AcceptsReturn="True"
+                    AcceptsTab="True"
+                    Name="CustomConfigurationTextBox"
+                >
+                    <TextBox.Text>
+                        <Binding Path="CustomConfiguration" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <!--Accept non-trusted certificates -->
+                <CheckBox
+                    Name="AcceptNonTrustedCertCheckBox"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="0 5 0 0"
+                    IsChecked="{Binding AcceptNonTrustedCert, Mode=TwoWay}"
+                    Content="Accept non-trusted certificates (requires restart)"
+                 />
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="0 5 0 0"
+                    >
+                    <CheckBox
+                        Name="AutomaticallyTriggerCompletionsCheckBox"
+                        IsChecked="{Binding AutomaticallyTriggerCompletions, Mode=TwoWay}"
+                        Content="Automatically trigger completions"
+                        IsEnabled="{Binding HasCompletionSupport }"
+                     />
+                    <!--Supported-->
+                    <imaging:CrispImage
+                        Width="16"
+                        Height="16"
+                        Margin="4 0 0 0"
+                        Moniker="{x:Static catalog:KnownMonikers.InfoTipInline}"
+                        ToolTip="To use Cody autocomplete make sure that the “Show inline completions” option in the IntelliCode section is enabled."
+                        Visibility="{Binding HasCompletionSupport , Converter={x:Static converters:BooleanToVisibilityConverter.Default}}"
+                        />
+                    <!--Not supported-->
+                    <imaging:CrispImage
+                        Width="16"
+                        Height="16"
+                        Margin="4 0 0 0"
+                        Moniker="{x:Static catalog:KnownMonikers.StatusInvalid}"
+                        ToolTip="Visual Studio 17.6+ is required to use Cody autocomplete or auto-edit. "
+                        Visibility="{Binding HasCompletionSupport , Converter={x:Static converters:BooleanToVisibilityConverter.Inverted}}"
+                    />
+                </StackPanel>
+
+
+                <CheckBox
+                    Name="EnableAutoEditCheckBox"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Margin="0 5 0 0"
+                    IsChecked="{Binding EnableAutoEdit, Mode=TwoWay}"
+                    Content="Enable Cody auto-edit (requires restart)"
+                    IsEnabled="{Binding HasCompletionSupport}"
+                   />
+
+                <!--Get Help-->
+                <Button 
+                    Margin="0 5 0 0"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Height="25"
+                    Width="100"
+                    Content="Get Help"
+                    HorizontalAlignment="Left"
+                    Command="{Binding ActivateBetaCommand}"
+                />
+
+
+
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

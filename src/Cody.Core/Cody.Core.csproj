@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FF2CC40-78E9-46C8-B2EF-30A1F1BE82F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cody.Core</RootNamespace>
+    <AssemblyName>Cody.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>false</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>VSTHRD010;VSTHRD200;VSTHRD105</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\AgentCallAttribute.cs" />
+    <Compile Include="Agent\AgentCallbackAttribute.cs" />
+    <Compile Include="Agent\IAgentProxy.cs" />
+    <Compile Include="Agent\IAgentService.cs" />
+    <Compile Include="Agent\INotificationHandler.cs" />
+    <Compile Include="Agent\NotificationHandlers.cs" />
+    <Compile Include="Agent\ProgressNotificationHandlers.cs" />
+    <Compile Include="Agent\Protocol\AutocompleteEditItem.cs" />
+    <Compile Include="Agent\Protocol\AutocompleteItem.cs" />
+    <Compile Include="Agent\Protocol\AutocompleteParams.cs" />
+    <Compile Include="Agent\Protocol\AutocompleteResult.cs" />
+    <Compile Include="Agent\Protocol\AutoeditChanges.cs" />
+    <Compile Include="Agent\Protocol\AutoeditImageDiff.cs" />
+    <Compile Include="Agent\Protocol\ChatPanelInfo.cs" />
+    <Compile Include="Agent\Protocol\ExecuteCommandParams.cs" />
+    <Compile Include="Agent\Protocol\ShowWindowMessageParams.cs" />
+    <Compile Include="Agent\Protocol\CodyFileRename.cs" />
+    <Compile Include="Agent\Protocol\AutoeditTextDiff.cs" />
+    <Compile Include="Agent\Protocol\DeleteFileOptions.cs" />
+    <Compile Include="Agent\Protocol\OptionsParams.cs" />
+    <Compile Include="Agent\Protocol\ProtocolAuthStatus.cs" />
+    <Compile Include="Agent\Protocol\CompletionBookkeepingEvent.cs" />
+    <Compile Include="Agent\Protocol\CompletionItemInfo.cs" />
+    <Compile Include="Agent\Protocol\CompletionItemParams.cs" />
+    <Compile Include="Agent\Protocol\GetDocumentsParams.cs" />
+    <Compile Include="Agent\Protocol\GetDocumentsResult.cs" />
+    <Compile Include="Agent\Protocol\ProgressOptions.cs" />
+    <Compile Include="Agent\Protocol\ProgressReportParams.cs" />
+    <Compile Include="Agent\Protocol\ProgressStartParams.cs" />
+    <Compile Include="Agent\Protocol\SaveDialogOptionsParams.cs" />
+    <Compile Include="Agent\Protocol\SelectedCompletionInfo.cs" />
+    <Compile Include="Agent\Protocol\TestProgress.cs" />
+    <Compile Include="Agent\Protocol\TextDocumentEditParams.cs" />
+    <Compile Include="Agent\Protocol\WorkspaceEditEntryMetadata.cs" />
+    <Compile Include="Agent\Protocol\WorkspaceEditMetadata.cs" />
+    <Compile Include="Agent\Protocol\WorkspaceEditOperation.cs" />
+    <Compile Include="Agent\Protocol\WorkspaceEditParams.cs" />
+    <Compile Include="Agent\Protocol\WorkspaceFolderDidChangeEvent.cs" />
+    <Compile Include="Agent\Protocol\TextDocumentShowParamsOptions.cs" />
+    <Compile Include="Agent\Protocol\TextDocumentShowParams.cs" />
+    <Compile Include="Agent\Protocol\CodyFilePath.cs" />
+    <Compile Include="Agent\Protocol\ClientCapabilities.cs" />
+    <Compile Include="Agent\Protocol\ClientInfo.cs" />
+    <Compile Include="Agent\Protocol\CreateWebviewPanelParams.cs" />
+    <Compile Include="Agent\Protocol\CurrentUserCodySubscription.cs" />
+    <Compile Include="Agent\Protocol\DefiniteWebviewOptions.cs" />
+    <Compile Include="Agent\Protocol\ExtensionConfiguration.cs" />
+    <Compile Include="Agent\Protocol\Position.cs" />
+    <Compile Include="Agent\Protocol\ProtocolTextDocument.cs" />
+    <Compile Include="Agent\Protocol\ProtocolTextDocumentContentChangeEvent.cs" />
+    <Compile Include="Agent\Protocol\Range.cs" />
+    <Compile Include="Agent\Protocol\ReceiveMessageStringEncodedParams.cs" />
+    <Compile Include="Agent\Protocol\ServerInfo.cs" />
+    <Compile Include="Agent\Protocol\WebviewCapabilities.cs" />
+    <Compile Include="Agent\Protocol\ResolveWebviewViewParams.cs" />
+    <Compile Include="Agent\Protocol\WriteFileOptions.cs" />
+    <Compile Include="Agent\SetHtmlEvent.cs" />
+    <Compile Include="Agent\TextDocumentNotificationHandlers.cs" />
+    <Compile Include="Agent\Protocol\TextEdit.cs" />
+    <Compile Include="Agent\WebviewMessageHandler.cs" />
+    <Compile Include="Common\StringExtensions.cs" />
+    <Compile Include="Common\Configuration.cs" />
+    <Compile Include="Common\Configuration.Setup.cs" />
+    <Compile Include="DocumentSync\DocumentSyncCallback.cs" />
+    <Compile Include="DocumentSync\IDocumentSyncActions.cs" />
+    <Compile Include="Ide\IInfobarNotifications.cs" />
+    <Compile Include="Ide\Notification.cs" />
+    <Compile Include="Infrastructure\ConfigurationService.cs" />
+    <Compile Include="Infrastructure\IConfigurationService.cs" />
+    <Compile Include="Infrastructure\IDocumentService.cs" />
+    <Compile Include="Infrastructure\IFileDialogService.cs" />
+    <Compile Include="Infrastructure\ISecretStorageService.cs" />
+    <Compile Include="Infrastructure\IProgressService.cs" />
+    <Compile Include="Logging\ISentryLog.cs" />
+    <Compile Include="Logging\ITestLogger.cs" />
+    <Compile Include="Logging\SentryLog.cs" />
+    <Compile Include="Trace\FileTraceListener.cs" />
+    <Compile Include="Trace\TraceEvent.cs" />
+    <Compile Include="Trace\TraceListener.cs" />
+    <Compile Include="Trace\TraceLogger.cs" />
+    <Compile Include="Trace\TraceManager.cs" />
+    <Compile Include="Ide\IVsVersionService.cs" />
+    <Compile Include="Infrastructure\WebViewsManager.cs" />
+    <Compile Include="Infrastructure\IColorThemeService.cs" />
+    <Compile Include="Infrastructure\ISolutionService.cs" />
+    <Compile Include="Infrastructure\IStatusbarService.cs" />
+    <Compile Include="Infrastructure\IWebChatHost.cs" />
+    <Compile Include="Infrastructure\VersionService.cs" />
+    <Compile Include="Infrastructure\IVersionService.cs" />
+    <Compile Include="Logging\IOutputWindowPane.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\ILog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\IUserSettingsProvider.cs" />
+    <Compile Include="Settings\IUserSettingsService.cs" />
+    <Compile Include="Settings\UserSettingsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes">
+      <Version>2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Sentry" Version="4.13.0" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
